@@ -30,7 +30,7 @@ app.get("/meme", (req, res) => {
         }
 
         const random = memes[Math.floor(Math.random() * memes.length)];
-        const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+        const baseUrl = process.env.BASE_URL || "https://meme-ap.netlify.app";
         const title = random.replace(/\.[^/.]+$/, ""); // Remove extension for title
 
         res.json({
