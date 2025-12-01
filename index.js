@@ -44,6 +44,12 @@ app.get("/meme", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`API de memes lista en el puerto ${PORT}`);
-});
+
+// Only listen if run directly (not imported)
+if (process.env.dev) {
+    app.listen(PORT, () => {
+        console.log(`API de memes lista en el puerto ${PORT}`);
+    });
+}
+
+export default app;
