@@ -40,8 +40,19 @@ export const handler = async (event, context) => {
     }
 
     const random = memes[Math.floor(Math.random() * memes.length)];
-    // Use the request URL to construct the base URL if possible, or fallback to env
-    const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+    
+    // Determine Base URL dynamically
+    let baseUrl = process.env.BASE_URL;
+    if (!baseUrl) {
+      const host = event.headers.host || event.headers.Host;
+      const protocol = event.headers['x-forwarded-proto'] || 'https';
+      if (host) {
+        baseUrl = `${protocol}://${host}`;
+      } else {
+        baseUrl = "https://meme-ap.netlify.app";
+      }
+    }
+    
     const title = random.replace(/\.[^/.]+$/, "");
 
     return {
