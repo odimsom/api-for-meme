@@ -6,6 +6,6 @@
   included_files = ["public/memes/**"]
 
 [[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/api"
+  from = "/meme"
+  to = "/.netlify/functions/meme"
   status = 200
