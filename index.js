@@ -17,6 +17,7 @@ if (!fs.existsSync(MEME_DIR)) {
     fs.mkdirSync(MEME_DIR, { recursive: true });
 }
 
+
 app.get("/meme", (req, res) => {
     try {
         const files = fs.readdirSync(MEME_DIR);
